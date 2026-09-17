@@ -22,8 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-# 忽略大体积的模型源文件
+# 忽略大体积的模型「源文件」（Blender 工程与手工备份），这些不参与构建
 _source_models/
 *.blend
 *.blend1
-*.bin
+# 注意：不能忽略 *.bin。glTF 的 .bin 是运行时必需的几何数据，
+# 一旦被忽略，CI 从仓库构建出的 dist 里就没有几何体，部署后六个面全是空的。
+# 只需要忽略备份目录里的 .bin（上面 _source_models/ 已经覆盖）。
+
+# 一次性的资源处理脚本与临时产物，不参与构建
+_scratch/
