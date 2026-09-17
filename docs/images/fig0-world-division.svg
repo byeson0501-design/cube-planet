@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 508" width="720" height="508">
+<style>
+text { font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif; }
+.t { fill: #171717; font-size: 14px; }
+.th { fill: #171717; font-size: 15px; font-weight: 500; }
+.ts { fill: #52525B; font-size: 13px; }
+.tm { fill: #52525B; font-family: Consolas, monospace; font-size: 13px; }
+.arr { stroke: #52525B; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.leader { stroke: #52525B; stroke-width: 1; fill: none; }
+.axis { stroke: #C9C9CF; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+.surf { stroke: #171717; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.curve { stroke: #4B3FE3; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.boxN { fill: #EFEFF2; stroke: #C9C9CF; }
+.boxB { fill: #EDEBFD; stroke: #4B3FE3; }
+.pillN { fill: #EFEFF2; stroke: #C9C9CF; }
+.pillB { fill: #EFEFF2; stroke: #4B3FE3; }
+.grid { stroke: #C9C9CF; stroke-width: 1; }
+.conn { stroke: #52525B; stroke-width: 1; fill: none; }
+.leaf { fill: #EFEFF2; stroke: #C9C9CF; }
+.rootbox { fill: #EDEBFD; stroke: #4B3FE3; }
+.lf { fill: #171717; font-size: 14px; }
+</style>
+<rect x="0" y="0" width="720" height="508" fill="#FFFFFF" />
+<defs>
+  <marker id="am" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#52525B" /></marker>
+  <marker id="amb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#4B3FE3" /></marker>
+</defs>
+<rect class="rootbox" x="250" y="30" width="220" height="52" rx="8" />
+<text class="th" x="360" y="54" text-anchor="middle" fill="#1A1759">六面体星球</text>
+<text class="ts" x="360" y="74" text-anchor="middle" fill="#4B3FE3">六个 48 × 48 的世界</text>
+<path class="conn" d="M360 82 L360 112 L110 112" />
+<line class="conn" x1="110" y1="112" x2="110" y2="446" />
+<line class="conn" x1="110" y1="166" x2="150" y2="166" /><rect class="leaf" x="150" y="144" width="540" height="44" rx="8" /><text class="lf" x="166" y="171">face0　西风大教堂</text><text class="ts" x="674" y="170" text-anchor="end">高天圣堂 · 遗迹与彩窗｜羽族旅人</text><line class="conn" x1="110" y1="222" x2="150" y2="222" /><rect class="leaf" x="150" y="200" width="540" height="44" rx="8" /><text class="lf" x="166" y="227">face1　存在回声</text><text class="ts" x="674" y="226" text-anchor="end">意识展廊 · 藤蔓、浮金与低语文字｜回声行者</text><line class="conn" x1="110" y1="278" x2="150" y2="278" /><rect class="leaf" x="150" y="256" width="540" height="44" rx="8" /><text class="lf" x="166" y="283">face2　拱环书苑</text><text class="ts" x="674" y="282" text-anchor="end">环廊庭院 · 苔藓、书卷与野花｜书页精灵</text><line class="conn" x1="110" y1="334" x2="150" y2="334" /><rect class="leaf" x="150" y="312" width="540" height="44" rx="8" /><text class="lf" x="166" y="339">face3　幽光溶洞</text><text class="ts" x="674" y="338" text-anchor="end">古迹回廊 · 苔藓、藤蔓与残柱｜溶洞守灵</text><line class="conn" x1="110" y1="390" x2="150" y2="390" /><rect class="leaf" x="150" y="368" width="540" height="44" rx="8" /><text class="lf" x="166" y="395">face4　锈蚀庭园</text><text class="ts" x="674" y="394" text-anchor="end">工业遗迹 · 藤蔓、铁锈与废弃管道｜锈蚀拾荒者</text><line class="conn" x1="110" y1="446" x2="150" y2="446" /><rect class="leaf" x="150" y="424" width="540" height="44" rx="8" /><text class="lf" x="166" y="451">face5　和风庭院</text><text class="ts" x="674" y="450" text-anchor="end">神社庭院 · 苔藓、红叶与鸟居｜庭院狐</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" width="720" height="450">
+<style>
+text { font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif; }
+.t { fill: #171717; font-size: 14px; }
+.th { fill: #171717; font-size: 15px; font-weight: 500; }
+.ts { fill: #52525B; font-size: 13px; }
+.tm { fill: #52525B; font-family: Consolas, monospace; font-size: 13px; }
+.arr { stroke: #52525B; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.leader { stroke: #52525B; stroke-width: 1; fill: none; }
+.axis { stroke: #C9C9CF; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+.surf { stroke: #171717; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.curve { stroke: #4B3FE3; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.boxN { fill: #EFEFF2; stroke: #C9C9CF; }
+.boxB { fill: #EDEBFD; stroke: #4B3FE3; }
+.pillN { fill: #EFEFF2; stroke: #C9C9CF; }
+.pillB { fill: #EFEFF2; stroke: #4B3FE3; }
+.grid { stroke: #C9C9CF; stroke-width: 1; }
+.conn { stroke: #52525B; stroke-width: 1; fill: none; }
+.leaf { fill: #EFEFF2; stroke: #C9C9CF; }
+.rootbox { fill: #EDEBFD; stroke: #4B3FE3; }
+.lf { fill: #171717; font-size: 14px; }
+</style>
+<rect x="0" y="0" width="720" height="450" fill="#FFFFFF" />
+<defs>
+  <marker id="am" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#52525B" /></marker>
+  <marker id="amb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#4B3FE3" /></marker>
+</defs>
+<text class="ts" x="46" y="34">面上局部正交基</text>
+<path class="arr" d="M110 152 L110 96" marker-end="url(#am)" />
+<path class="arr" d="M110 152 L172 152" marker-end="url(#am)" />
+<path class="arr" d="M110 152 L150 190" marker-end="url(#am)" />
+<circle cx="110" cy="152" r="3" fill="#52525B" />
+<text class="tm" x="118" y="104">n 法线</text>
+<text class="tm" x="180" y="157">r 右</text>
+<text class="tm" x="157" y="204">f 前</text>
+
+<polygon points="293.4,200 380,250 380,350 293.4,300" fill="#EFEFF2" stroke="#C9C9CF" />
+<polygon points="466.6,200 466.6,300 380,350 380,250" fill="#EFEFF2" stroke="#C9C9CF" />
+<polygon points="380,150 466.6,200 380,250 293.4,200" fill="#EDEBFD" stroke="#4B3FE3" />
+<circle cx="410" cy="212" r="9" fill="#4B3FE3" stroke="#FFFFFF" stroke-width="2" />
+
+<path class="leader" d="M380 116 L380 196" />
+<rect class="pillB" x="277.5" y="88" width="205" height="28" rx="8" />
+<text class="ts" x="380" y="107" text-anchor="middle" fill="#1A1759">face0 西风大教堂 · 出生面</text>
+
+<path class="leader" d="M423.3 275 L536 275" />
+<rect class="pillN" x="536" y="261" width="128" height="28" rx="8" />
+<text class="ts" x="600" y="280" text-anchor="middle">face5 和风庭院</text>
+
+<path class="leader" d="M336.7 275 L224 275" />
+<rect class="pillN" x="96" y="261" width="128" height="28" rx="8" />
+<text class="ts" x="160" y="280" text-anchor="middle">face2 拱环书苑</text>
+
+<circle cx="126" cy="416" r="5" fill="#4B3FE3" />
+<text class="ts" x="142" y="420">角色 · 未直接可见的三面：face1 存在回声 / face3 幽光溶洞 / face4 锈蚀庭园</text>
+</svg>

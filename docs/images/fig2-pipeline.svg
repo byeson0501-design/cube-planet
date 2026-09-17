@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 268" width="720" height="268">
+<style>
+text { font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif; }
+.t { fill: #171717; font-size: 14px; }
+.th { fill: #171717; font-size: 15px; font-weight: 500; }
+.ts { fill: #52525B; font-size: 13px; }
+.tm { fill: #52525B; font-family: Consolas, monospace; font-size: 13px; }
+.arr { stroke: #52525B; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.leader { stroke: #52525B; stroke-width: 1; fill: none; }
+.axis { stroke: #C9C9CF; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+.surf { stroke: #171717; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.curve { stroke: #4B3FE3; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.boxN { fill: #EFEFF2; stroke: #C9C9CF; }
+.boxB { fill: #EDEBFD; stroke: #4B3FE3; }
+.pillN { fill: #EFEFF2; stroke: #C9C9CF; }
+.pillB { fill: #EFEFF2; stroke: #4B3FE3; }
+.grid { stroke: #C9C9CF; stroke-width: 1; }
+.conn { stroke: #52525B; stroke-width: 1; fill: none; }
+.leaf { fill: #EFEFF2; stroke: #C9C9CF; }
+.rootbox { fill: #EDEBFD; stroke: #4B3FE3; }
+.lf { fill: #171717; font-size: 14px; }
+</style>
+<rect x="0" y="0" width="720" height="268" fill="#FFFFFF" />
+<defs>
+  <marker id="am" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#52525B" /></marker>
+  <marker id="amb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#4B3FE3" /></marker>
+</defs>
+
+<rect class="boxN" x="40" y="40" width="136" height="64" rx="8" />
+<text class="th" x="108" y="68" text-anchor="middle" >逐帧更新</text>
+<text class="ts" x="108" y="90" text-anchor="middle" >animate()</text>
+
+<rect class="boxB" x="208" y="40" width="136" height="64" rx="8" />
+<text class="th" x="276" y="68" text-anchor="middle" fill="#1A1759">按面剔除</text>
+<text class="ts" x="276" y="90" text-anchor="middle" fill="#4B3FE3">visible = false</text>
+
+<rect class="boxN" x="376" y="40" width="136" height="64" rx="8" />
+<text class="th" x="444" y="68" text-anchor="middle" >光照 + 阴影</text>
+<text class="ts" x="444" y="90" text-anchor="middle" >逐帧指数插值</text>
+
+<rect class="boxN" x="544" y="40" width="136" height="64" rx="8" />
+<text class="th" x="612" y="68" text-anchor="middle" >场景渲染</text>
+<text class="ts" x="612" y="90" text-anchor="middle" >RenderPass</text>
+<path class="arr" d="M176 72 L200 72" marker-end="url(#am)" />
+<path class="arr" d="M344 72 L368 72" marker-end="url(#am)" />
+<path class="arr" d="M512 72 L536 72" marker-end="url(#am)" />
+<path class="arr" d="M612 104 L612 132 L276 132 L276 152" marker-end="url(#am)" />
+
+<rect class="boxN" x="208" y="160" width="136" height="64" rx="8" />
+<text class="th" x="276" y="188" text-anchor="middle" >泛光 Bloom</text>
+<text class="ts" x="276" y="210" text-anchor="middle" >阈值 2.5</text>
+
+<rect class="boxN" x="376" y="160" width="136" height="64" rx="8" />
+<text class="th" x="444" y="188" text-anchor="middle" >色彩空间输出</text>
+<text class="ts" x="444" y="210" text-anchor="middle" >OutputPass</text>
+<path class="arr" d="M344 192 L368 192" marker-end="url(#am)" />
+</svg>

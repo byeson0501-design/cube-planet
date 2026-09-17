@@ -1,5 +1,9 @@
 import * as THREE from 'three';
 export const loadingManager = new THREE.LoadingManager();
+// 运行时拼出来的资源路径必须自己带上 base 前缀。vite.config.js 里配了 base: '/cube-planet/'，
+// 但那只作用于 index.html / CSS 里被 Vite 改写过的那部分引用，代码里手写的 '/models/...' 不会自动加前缀——
+// 结果是模型全部 404，场景里只剩下纯色背景和角色本身，看起来就是「一片空场景」。
+export const assetUrl = (path) => import.meta.env.BASE_URL + path.replace(/^\//, '');
 export const FACE_BASES = [
   { normal: new THREE.Vector3(0, 1, 0), right: new THREE.Vector3(1, 0, 0), forward: new THREE.Vector3(0, 0, -1) }, { normal: new THREE.Vector3(0, -1, 0), right: new THREE.Vector3(1, 0, 0), forward: new THREE.Vector3(0, 0, 1) }, { normal: new THREE.Vector3(0, 0, 1), right: new THREE.Vector3(1, 0, 0), forward: new THREE.Vector3(0, 1, 0) }, { normal: new THREE.Vector3(0, 0, -1), right: new THREE.Vector3(-1, 0, 0), forward: new THREE.Vector3(0, 1, 0) }, { normal: new THREE.Vector3(-1, 0, 0), right: new THREE.Vector3(0, 0, 1), forward: new THREE.Vector3(0, 1, 0) }, { normal: new THREE.Vector3(1, 0, 0), right: new THREE.Vector3(0, 0, -1), forward: new THREE.Vector3(0, 1, 0) },
 ];

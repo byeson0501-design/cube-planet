@@ -1,16 +1,16 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
-import { pointOnFace, place, loadingManager } from './face-utils.js';
+import { pointOnFace, place, loadingManager, assetUrl } from './face-utils.js';
 
 // 源模型里那块 Plane 地面（106×106 的 2 面片平面）所在的 y。竖直方向要按它对齐而不是按包围盒最低点：
 // 洞壁的墙根一直延伸到 y≈-44.7，比可行走的地面低了 46 个单位，用最低点对齐会把角色埋进地里。
 // 如果重新导出后发现角色陷进地面或者浮空，就是这里需要重新量一下。
 const GROUND_Y = 1.41;
 
-export function createFace(scene, size, basis) {
+export function createFace(scene, size, basis, onReady) {
   const group = new THREE.Group();
-  const face = {
+  const face = { group,
     name: '幽光溶洞', culture: '古迹回廊 · 苔藓、藤蔓与残柱', gravity: '重力：标准重力（1.00 g）', being: '溶洞守灵',
     creatureColor: '#7c9473', accent: '#b9d1a0', speedMultiplier: 1,
     // 幽光溶洞：洞穴里没有直射阳光。主光压到 1.3 并且方向做得很陡（sunHeight 40、前右偏移很小），
@@ -37,7 +37,7 @@ export function createFace(scene, size, basis) {
   group.add(anchor);
   // 这个模型已经用 gltf-transform 做过 quantize + meshopt 压缩（.bin 从 266.6MB 降到约 45MB），
   // 必须挂上 MeshoptDecoder 才能解析里面的 EXT_meshopt_compression 数据。
-  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load('/models/face3/cave-temple.gltf', (gltf) => {
+  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load(assetUrl('/models/face3/cave-temple.gltf'), (gltf) => {
     const model = gltf.scene;
     // 这个导出里混进了几类不属于「古迹回廊」的东西。逐条说明依据，方便你判断是否要保留其中某个：
     // 1) Plane.001 —— 106×106 的竖直面，材质 Material.001 没有任何贴图、baseColor 是纯黑 [0,0,0]，
@@ -77,6 +77,7 @@ export function createFace(scene, size, basis) {
     model.position.y -= GROUND_Y * scaleY;
     anchor.add(model); anchor.updateMatrixWorld(true);
     model.traverse((object) => { if (object.isMesh) { object.castShadow = true; object.receiveShadow = true; } });
-  }, undefined, (error) => console.error('Cave temple load failed:', error));
+    onReady?.();
+  }, undefined, (error) => { console.error('Cave temple load failed:', error); onReady?.(); });
   return face;
 }

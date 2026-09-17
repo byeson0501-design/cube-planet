@@ -1,10 +1,10 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { pointOnFace, place, loadingManager } from './face-utils.js';
+import { pointOnFace, place, loadingManager, assetUrl } from './face-utils.js';
 
-export function createFace(scene, size, basis) {
+export function createFace(scene, size, basis, onReady) {
   const group = new THREE.Group();
-  const face = {
+  const face = { group,
     name: '西风大教堂', culture: '高天圣堂 · 遗迹与彩窗', gravity: '重力：标准重力（1.00 g）', being: '羽族旅人',
     creatureColor: '#f5deb6', accent: '#fff0ba', speedMultiplier: 1.1,
     // 高天圣堂：明亮通透的神圣感。注意这是「室内」场景——主光会被教堂屋顶挡掉大半，
@@ -23,7 +23,7 @@ export function createFace(scene, size, basis) {
   // 在此前基础上下降两个角色直径单位，避免出生点与模型底板重叠。
   place(anchor, basis, size, 0, 0, -2.75);
   group.add(anchor);
-  new GLTFLoader(loadingManager).load('/models/face0/%E8%A5%BF%E9%A3%8E%E5%A4%A7%E6%95%99%E5%A0%82.gltf', (gltf) => {
+  new GLTFLoader(loadingManager).load(assetUrl('/models/face0/%E8%A5%BF%E9%A3%8E%E5%A4%A7%E6%95%99%E5%A0%82.gltf'), (gltf) => {
     const model = gltf.scene;
     // 源文件里混入了 14 个 Blender 光照探针体积占位方块（Cube / Cube.001…Cube.011、
     // 立方体、立方体.001，材质均为默认占位材质），并非教堂实体，需先剔除——
@@ -59,6 +59,7 @@ export function createFace(scene, size, basis) {
         if (!isGlass) { material.transparent = false; material.depthWrite = true; material.needsUpdate = true; }
       });
     });
-  }, undefined, (error) => console.error('Cathedral load failed:', error));
+    onReady?.();
+  }, undefined, (error) => { console.error('Cathedral load failed:', error); onReady?.(); });
   return face;
 }

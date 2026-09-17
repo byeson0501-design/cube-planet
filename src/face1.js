@@ -1,11 +1,11 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
-import { pointOnFace, place, loadingManager } from './face-utils.js';
+import { pointOnFace, place, loadingManager, assetUrl } from './face-utils.js';
 
-export function createFace(scene, size, basis) {
+export function createFace(scene, size, basis, onReady) {
   const group = new THREE.Group();
-  const face = {
+  const face = { group,
     name: '存在回声', culture: '意识展廊 · 藤蔓、浮金与低语文字', gravity: '重力：标准重力（1.00 g）', being: '回声行者',
     creatureColor: '#c9a86a', accent: '#e8d9a0', speedMultiplier: .95,
     // 意识展廊：同样偏室内，主光会被顶棚挡掉，所以环境光给 1.5 保证暗部还有细节，
@@ -25,7 +25,7 @@ export function createFace(scene, size, basis) {
   group.add(anchor);
   // 这个模型已经用 gltf-transform 做过 quantize + meshopt 压缩（.bin 从 463MB 降到约 79MB），
   // 必须挂上 MeshoptDecoder 才能解析里面的 EXT_meshopt_compression 数据。
-  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load('/models/face1/Echoes-of-Existence.gltf', (gltf) => {
+  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load(assetUrl('/models/face1/Echoes-of-Existence.gltf'), (gltf) => {
     const model = gltf.scene;
     // 之前怀疑模型朝向倒置，加了这个翻转开关——现场截图确认朝向本身没问题，
     // 所以保持关闭。真正的问题是上面的下降偏移量算多了。
@@ -67,6 +67,7 @@ export function createFace(scene, size, basis) {
         material.needsUpdate = true;
       });
     });
-  }, undefined, (error) => console.error('Echoes of Existence load failed:', error));
+    onReady?.();
+  }, undefined, (error) => { console.error('Echoes of Existence load failed:', error); onReady?.(); });
   return face;
 }

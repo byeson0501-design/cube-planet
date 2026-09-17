@@ -1,11 +1,11 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
-import { pointOnFace, place, loadingManager } from './face-utils.js';
+import { pointOnFace, place, loadingManager, assetUrl } from './face-utils.js';
 
-export function createFace(scene, size, basis) {
+export function createFace(scene, size, basis, onReady) {
   const group = new THREE.Group();
-  const face = {
+  const face = { group,
     name: '拱环书苑', culture: '环廊庭院 · 苔藓、书卷与野花', gravity: '重力：标准重力（1.00 g）', being: '书页精灵',
     creatureColor: '#8fae6b', accent: '#c9d98a', speedMultiplier: 1,
     // 环廊庭院：柔和的日常日照。环廊是半围合结构，主光会被廊顶削掉一部分，
@@ -25,7 +25,7 @@ export function createFace(scene, size, basis) {
   group.add(anchor);
   // 这个模型已经用 gltf-transform 做过 quantize + meshopt 压缩（.bin 从 249MB 降到约 70MB），
   // 必须挂上 MeshoptDecoder 才能解析里面的 EXT_meshopt_compression 数据。
-  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load('/models/face2/Site File .gltf', (gltf) => {
+  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load(assetUrl('/models/face2/Site File .gltf'), (gltf) => {
     const model = gltf.scene;
     // 源文件里混入了一个巨大的占位立方体（节点名 Cube，材质是默认占位名，缩放约 139 倍，
     // 把整个庭院场景都包了进去）——不是真实场景内容，需要先剔除，否则会渲染成一个
@@ -53,6 +53,7 @@ export function createFace(scene, size, basis) {
     model.position.x -= center.x; model.position.z -= center.z; model.position.y -= box.min.y;
     anchor.add(model); anchor.updateMatrixWorld(true);
     model.traverse((object) => { if (object.isMesh) { object.castShadow = true; object.receiveShadow = true; } });
-  }, undefined, (error) => console.error('Site File load failed:', error));
+    onReady?.();
+  }, undefined, (error) => { console.error('Site File load failed:', error); onReady?.(); });
   return face;
 }

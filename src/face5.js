@@ -1,11 +1,11 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
-import { pointOnFace, place, loadingManager } from './face-utils.js';
+import { pointOnFace, place, loadingManager, assetUrl } from './face-utils.js';
 
-export function createFace(scene, size, basis) {
+export function createFace(scene, size, basis, onReady) {
   const group = new THREE.Group();
-  const face = {
+  const face = { group,
     name: '和风庭院', culture: '神社庭院 · 苔藓、红叶与鸟居', gravity: '重力：标准重力（1.00 g）', being: '庭院狐',
     creatureColor: '#c98b7a', accent: '#f0c0a8', speedMultiplier: 1,
     // 神社庭院：黄昏金色时刻。主光是暖橙、压得很低（sunHeight 只有 11，而 sunForward 到 22），
@@ -32,7 +32,7 @@ export function createFace(scene, size, basis) {
   group.add(anchor);
   // 这个模型已经用 gltf-transform 做过 quantize + meshopt 压缩（.bin 从 485MB 降到约 53MB），
   // 必须挂上 MeshoptDecoder 才能解析里面的 EXT_meshopt_compression 数据。
-  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load('/models/face5/%E5%94%AF%E7%BE%8E%E6%97%A5%E5%BC%8F%E5%9C%BA%E6%99%AF.gltf', (gltf) => {
+  new GLTFLoader(loadingManager).setMeshoptDecoder(MeshoptDecoder).load(assetUrl('/models/face5/%E5%94%AF%E7%BE%8E%E6%97%A5%E5%BC%8F%E5%9C%BA%E6%99%AF.gltf'), (gltf) => {
     const model = gltf.scene;
     const hideOwnMesh = new THREE.MeshBasicMaterial({ visible: false });
     // 注意：three.js 加载时会把节点名重写一遍（空格换成下划线、点号直接删掉），
@@ -83,6 +83,7 @@ export function createFace(scene, size, basis) {
         material.needsUpdate = true;
       });
     });
-  }, undefined, (error) => console.error('Japanese garden load failed:', error));
+    onReady?.();
+  }, undefined, (error) => { console.error('Japanese garden load failed:', error); onReady?.(); });
   return face;
 }

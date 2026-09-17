@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" width="720" height="390">
+<style>
+text { font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif; }
+.t { fill: #171717; font-size: 14px; }
+.th { fill: #171717; font-size: 15px; font-weight: 500; }
+.ts { fill: #52525B; font-size: 13px; }
+.tm { fill: #52525B; font-family: Consolas, monospace; font-size: 13px; }
+.arr { stroke: #52525B; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.leader { stroke: #52525B; stroke-width: 1; fill: none; }
+.axis { stroke: #C9C9CF; stroke-width: 1.5; fill: none; stroke-linecap: round; }
+.surf { stroke: #171717; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.curve { stroke: #4B3FE3; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.boxN { fill: #EFEFF2; stroke: #C9C9CF; }
+.boxB { fill: #EDEBFD; stroke: #4B3FE3; }
+.pillN { fill: #EFEFF2; stroke: #C9C9CF; }
+.pillB { fill: #EFEFF2; stroke: #4B3FE3; }
+.grid { stroke: #C9C9CF; stroke-width: 1; }
+.conn { stroke: #52525B; stroke-width: 1; fill: none; }
+.leaf { fill: #EFEFF2; stroke: #C9C9CF; }
+.rootbox { fill: #EDEBFD; stroke: #4B3FE3; }
+.lf { fill: #171717; font-size: 14px; }
+</style>
+<rect x="0" y="0" width="720" height="390" fill="#FFFFFF" />
+<defs>
+  <marker id="am" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#52525B" /></marker>
+  <marker id="amb" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto"><path d="M1 1 L7 4 L1 7 Z" fill="#4B3FE3" /></marker>
+</defs>
+<circle cx="76" cy="22" r="5" fill="#3C2ECA" /><text class="ts" x="88" y="27">本轮优化前</text>
+<circle cx="196" cy="22" r="5" fill="#A9AEFF" /><text class="ts" x="208" y="27">当前</text>
+<text class="ts" x="690" y="27" text-anchor="end">单位：MB（模型资源，不含 .blend 源文件）</text>
+<line class="grid" x1="70" y1="340" x2="690" y2="340" /><text class="ts" x="62" y="344" text-anchor="end">0</text><line class="grid" x1="70" y1="290" x2="690" y2="290" /><text class="ts" x="62" y="294" text-anchor="end">50</text><line class="grid" x1="70" y1="240" x2="690" y2="240" /><text class="ts" x="62" y="244" text-anchor="end">100</text><line class="grid" x1="70" y1="190" x2="690" y2="190" /><text class="ts" x="62" y="194" text-anchor="end">150</text><line class="grid" x1="70" y1="140" x2="690" y2="140" /><text class="ts" x="62" y="144" text-anchor="end">200</text><line class="grid" x1="70" y1="90" x2="690" y2="90" /><text class="ts" x="62" y="94" text-anchor="end">250</text><rect x="86.7" y="303.0" width="32" height="37" rx="4" fill="#3C2ECA" /><rect x="124.7" y="324.6" width="32" height="15.4" rx="4" fill="#A9AEFF" /><rect x="190.0" y="226.4" width="32" height="113.6" rx="4" fill="#3C2ECA" /><rect x="228.0" y="252.4" width="32" height="87.6" rx="4" fill="#A9AEFF" /><rect x="293.3" y="94.1" width="32" height="245.9" rx="4" fill="#3C2ECA" /><rect x="331.3" y="243.3" width="32" height="96.7" rx="4" fill="#A9AEFF" /><rect x="396.7" y="206.8" width="32" height="133.2" rx="4" fill="#3C2ECA" /><rect x="434.7" y="294.0" width="32" height="46" rx="4" fill="#A9AEFF" /><rect x="500.0" y="231.6" width="32" height="108.4" rx="4" fill="#3C2ECA" /><rect x="538.0" y="315.1" width="32" height="24.9" rx="4" fill="#A9AEFF" /><rect x="603.3" y="185.1" width="32" height="154.9" rx="4" fill="#3C2ECA" /><rect x="641.3" y="269.7" width="32" height="70.3" rx="4" fill="#A9AEFF" /><text class="ts" x="121.7" y="362" text-anchor="middle">face0</text><text class="ts" x="225.0" y="362" text-anchor="middle">face1</text><text class="ts" x="328.3" y="362" text-anchor="middle">face2</text><text class="ts" x="431.7" y="362" text-anchor="middle">face3</text><text class="ts" x="535.0" y="362" text-anchor="middle">face4</text><text class="ts" x="638.3" y="362" text-anchor="middle">face5</text>
+</svg>
